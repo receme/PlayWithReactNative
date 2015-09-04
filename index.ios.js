@@ -25,14 +25,18 @@ var PlayWithReactNative = React.createClass({
 
 		return(
 			<View style={styles.container}>
-        	<Text>{movie.title}</Text>
-        	<Text>{movie.year}</Text>
-        	<Image 
-        		source={{uri: movie.posters.thumbnail}}
-        		style={styles.thumbnail} 
-        	/>
+        <Image 
+          source={{uri: movie.posters.thumbnail}}
+          style={styles.thumbnail}>
+        </Image> 
+        
+
+        <View style={styles.rightContainer}>
+        	<Text style={styles.title}>{movie.title}</Text>
+        	<Text style={styles.year}>{movie.year}</Text>
+        </View>
         	
-      		</View>
+      </View>
 		)
 	}
 })
@@ -42,9 +46,14 @@ var PlayWithReactNative = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  rightContainer: {
+    flex: 1,
+    marginRight:10,
   },
   welcome: {
     fontSize: 20,
@@ -54,7 +63,16 @@ var styles = StyleSheet.create({
   thumbnail: {
     width: 53,
     height: 81,
-  }
+    marginLeft:10,
+  },
+  title: {
+    fontSize: 30,
+    marginBottom: 8,
+    textAlign: 'center',
+  },
+  year: {
+    textAlign: 'center',
+  },
 });
 
 AppRegistry.registerComponent('PlayWithReactNative', () => PlayWithReactNative);
